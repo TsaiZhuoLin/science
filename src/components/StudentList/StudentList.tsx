@@ -1,5 +1,5 @@
 // react
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 // components
 import StudentItem from "./StudentItem/StudentItem";
@@ -9,58 +9,34 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "@store/index";
 import { fetchUsers } from "@/store/features/user/control";
 
-// type
-import { T_StudentItem } from "./types";
-
 // style
 import { StudentListContainer } from "./StyledStudentList";
+import { T_User } from "@/store/features/user/types";
+import { Spin } from "antd";
 
 const StudentList = () => {
 	const dispatch = useDispatch<AppDispatch>();
-	const users = useSelector((state: RootState) => state.user.users);
+	const { users, status } = useSelector((state: RootState) => state.user);
+	const isLoading = status === "loading";
 
 	useEffect(() => {
 		dispatch(fetchUsers());
 	}, []);
 
 	useEffect(() => {
-		console.log("users", users);
+		if (users) {
+			console.log("users", users);
+		}
 	}, [users]);
-
-	const fakeStudentList: T_StudentItem[] = [
-		{
-			id: 1,
-			name: "Philip",
-			counts: 5,
-		},
-		{
-			id: 2,
-			name: "Darell",
-			counts: 3,
-		},
-		{
-			id: 3,
-			name: "Guest",
-			counts: 2,
-		},
-		{
-			id: 4,
-			name: "Cody",
-			counts: 1,
-		},
-		{
-			id: 5,
-			name: "Guest",
-			counts: 5,
-		},
-	];
 
 	return (
 		<StudentListContainer>
 			<div className="studentItemSection">
-				{fakeStudentList.map((item: T_StudentItem) => {
-					return <StudentItem student={item} />;
-				})}
+				{isLoading && <Spin />}
+				{!isLoading &&
+					users.map((item: T_User) => {
+						return <StudentItem student={item} />;
+					})}
 			</div>
 		</StudentListContainer>
 	);

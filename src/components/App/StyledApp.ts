@@ -9,4 +9,5 @@ export const AppContainer = styled.div`
 	justify-content: flex-start;
 	align-items: center;
 	flex-direction: column;
+	overflow: auto;
 `;

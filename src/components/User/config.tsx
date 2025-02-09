@@ -15,3 +15,12 @@ export const tabItems: T_tabItems[] = [
 		children: <>Group</>,
 	},
 ];
+
+export const modalBodyStyle = {
+	display: "flex",
+	justifyContent: "center",
+	alignItems: "center",
+	height: "auto",
+};
+
+export const SCIENCE_URL = "https://www.classswift.viewsonic.io/";

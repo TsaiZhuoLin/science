@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StudentItemContainer = styled.div`
+export const StudentItemContainer = styled.div<{ name: string }>`
 	width: 150px;
 	height: 150px;
 	border-radius: 5px;
@@ -8,7 +8,9 @@ export const StudentItemContainer = styled.div`
 	.idPanel {
 		width: 100%;
 		height: 30px;
-		background-color: #1277e9;
+		/* background-color: #1277e9; */
+		background-color: ${(props) =>
+			props.name === "Guest" ? "#B6BBBC" : "#1277e9"};
 		border-radius: 5px 5px 0 0;
 		display: flex;
 		justify-content: center;
@@ -29,6 +31,7 @@ export const StudentItemContainer = styled.div`
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		color: ${(props) => (props.name === "Guest" ? "#B6BBBC" : "black")};
 	}
 
 	.countsPanel {
@@ -57,14 +60,20 @@ export const StudentItemContainer = styled.div`
 			align-items: center;
 			color: #fff;
 			border-radius: 5px;
+			&:hover {
+				cursor: ${(props) =>
+					props.name === "Guest" ? "not-allowed" : "pointer"};
+			}
 		}
 
 		.button.sub {
-			background-color: #e53058;
+			background-color: ${(props) =>
+				props.name === "Guest" ? "#B6BBBC" : "#e53058"};
 		}
 
 		.button.add {
-			background-color: #6bc52f;
+			background-color: ${(props) =>
+				props.name === "Guest" ? "#B6BBBC" : "#6bc52f"};
 		}
 	}
 `;
