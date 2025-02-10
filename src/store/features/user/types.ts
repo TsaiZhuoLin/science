@@ -4,6 +4,7 @@ export type T_User = {
 	id: number;
 	name: string;
 	counts: number;
+	group: string | null;
 };
 
 export type T_Users = {
@@ -11,6 +12,7 @@ export type T_Users = {
 	status: "idle" | "loading" | "succeeded" | "failed";
 	totalUsers: number;
 	verifiedUsers: number;
+	currentGroup: string;
 };
 
 export type T_ChangeCountAction = {

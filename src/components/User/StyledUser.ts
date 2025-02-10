@@ -15,6 +15,11 @@ export const UserContainer = styled.div`
 			cursor: pointer;
 		}
 	}
+
+	@media (max-width: 1024px) {
+		width: 100%;
+		max-width: 768px;
+	}
 `;
 
 export const ModalTitleContainer = styled.div`

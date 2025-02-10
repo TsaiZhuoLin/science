@@ -13,6 +13,7 @@ const initialState: T_Users = {
 	status: "idle",
 	totalUsers: 0,
 	verifiedUsers: 0,
+	currentGroup: "a",
 };
 
 const userSlice = createSlice({
@@ -33,6 +34,9 @@ const userSlice = createSlice({
 			) {
 				student.counts -= 1;
 			}
+		},
+		rxChangeGroup: (state, action: PayloadAction<string>) => {
+			state.currentGroup = action.payload;
 		},
 	},
 	extraReducers: (builder) => {
@@ -55,5 +59,5 @@ const userSlice = createSlice({
 			});
 	},
 });
-export const { rxChangeCount } = userSlice.actions;
+export const { rxChangeCount, rxChangeGroup } = userSlice.actions;
 export default userSlice.reducer;

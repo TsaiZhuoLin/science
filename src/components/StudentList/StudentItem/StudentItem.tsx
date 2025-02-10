@@ -3,7 +3,7 @@
 // redux
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store";
-import { rxChangeCount } from "@/store/features/user/userSlice";
+import { rxChangeCount, rxChangeGroup } from "@/store/features/user/userSlice";
 
 // type
 import { E_CountChange, T_StudentItemProps } from "./types";
@@ -11,24 +11,35 @@ import { E_CountChange, T_StudentItemProps } from "./types";
 // style
 import { StudentItemContainer } from "./StyledStudentItem";
 import * as Ctrl from "./control";
+import { T_User } from "@/store/features/user/types";
+import { E_TabType } from "../types";
 
 const StudentItem = (props: T_StudentItemProps) => {
 	const dispatch = useDispatch<AppDispatch>();
-	const { student } = props;
+	const { student, tabType, currentGroup } = props;
 
 	const handleCountChange = (type: E_CountChange) => () => {
-		const ctrlProps = {
+		Ctrl.handleCountChange({
 			dispatch,
 			rxChangeCount,
 			student,
 			type,
-		};
-
-		Ctrl.handleCountChange(ctrlProps);
+		});
 	};
 
+	const handleClickStudentItem = (student: T_User) => () => {
+		if (tabType === E_TabType.LIST) return;
+		if (student.group) {
+			dispatch(rxChangeGroup(student.group));
+		}
+	};
 	return (
-		<StudentItemContainer name={student.name}>
+		<StudentItemContainer
+			student={student}
+			currentGroup={currentGroup}
+			tabType={tabType}
+			onClick={handleClickStudentItem(student)}
+		>
 			<div className="idPanel">{student.id}</div>
 			<div className="namePanel">{student.name}</div>
 			<div className="countsPanel">

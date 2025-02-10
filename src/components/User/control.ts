@@ -1,5 +1,4 @@
 // react
-import React, { useState } from "react";
 
 // types
 import { T_handleTabKeyDown } from "./types";

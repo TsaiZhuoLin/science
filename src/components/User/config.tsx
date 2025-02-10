@@ -1,5 +1,6 @@
 // component
 import StudentList from "../StudentList/StudentList";
+import StudentGroup from "../StudentGroup/StudentGroup";
 // type
 import { T_tabItems } from "./types";
 
@@ -12,7 +13,7 @@ export const tabItems: T_tabItems[] = [
 	{
 		key: "2",
 		label: "Group",
-		children: <>Group</>,
+		children: <StudentGroup />,
 	},
 ];
 

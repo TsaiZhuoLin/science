@@ -13,21 +13,18 @@ import { fetchUsers } from "@/store/features/user/control";
 import { StudentListContainer } from "./StyledStudentList";
 import { T_User } from "@/store/features/user/types";
 import { Spin } from "antd";
+import { E_TabType } from "./types";
 
 const StudentList = () => {
 	const dispatch = useDispatch<AppDispatch>();
-	const { users, status } = useSelector((state: RootState) => state.user);
+	const { users, status, currentGroup } = useSelector(
+		(state: RootState) => state.user
+	);
 	const isLoading = status === "loading";
 
 	useEffect(() => {
 		dispatch(fetchUsers());
 	}, []);
-
-	useEffect(() => {
-		if (users) {
-			console.log("users", users);
-		}
-	}, [users]);
 
 	return (
 		<StudentListContainer>
@@ -35,7 +32,14 @@ const StudentList = () => {
 				{isLoading && <Spin />}
 				{!isLoading &&
 					users.map((item: T_User) => {
-						return <StudentItem student={item} />;
+						return (
+							<StudentItem
+								key={item.id}
+								student={item}
+								tabType={E_TabType.LIST}
+								currentGroup={currentGroup}
+							/>
+						);
 					})}
 			</div>
 		</StudentListContainer>

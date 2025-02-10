@@ -1,5 +1,6 @@
 // type
-import { T_StudentItem } from "../types";
+import { T_User } from "@/store/features/user/types";
+import { E_TabType } from "../types";
 
 export enum E_CountChange {
 	ADDITION = "ADDITION",
@@ -7,5 +8,13 @@ export enum E_CountChange {
 }
 
 export type T_StudentItemProps = {
-	student: T_StudentItem;
+	student: T_User;
+	tabType: E_TabType;
+	currentGroup: string;
+};
+
+export type T_StudentItemContainerProps = {
+	student: T_User;
+	currentGroup: string;
+	tabType: E_TabType;
 };

@@ -5,7 +5,7 @@ import { useState } from "react";
 import ModalTitle from "./ModalTitle";
 
 // style
-import { message, Modal, Tabs } from "antd";
+import { Modal, Tabs } from "antd";
 import { UserContainer } from "./StyledUser";
 import { MoreOutlined } from "@ant-design/icons";
 
@@ -28,7 +28,6 @@ const User = () => {
 
 	const handleOk = () => {
 		setIsModalOpen(false);
-		message.success("已複製!");
 	};
 
 	const handleCancel = () => {

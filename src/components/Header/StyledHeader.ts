@@ -14,4 +14,9 @@ export const HeaderContainer = styled.div`
 		font-size: 25px;
 		font-weight: bold;
 	}
+
+	@media (max-width: 1024px) {
+		width: 100%;
+		max-width: 768px;
+	}
 `;

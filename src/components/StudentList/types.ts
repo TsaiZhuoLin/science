@@ -1,5 +1,4 @@
-export type T_StudentItem = {
-	id: number;
-	name: string;
-	counts: number;
-};
+export enum E_TabType {
+	LIST = "LIST",
+	GROUP = "GROUP",
+}
