@@ -13,5 +13,5 @@ npm run dev
 ### If You encounter "react-copy-to-clipboard" installation issue
 
 ```
-npm install react-copy-to-clipboard --force
+npm install --force
 ```
